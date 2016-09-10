@@ -1,0 +1,30 @@
+ImageIcon icon = new ImageIcon("CardImages/"+(c+2)+k+".gif");
+					Pair pair = coordinates.remove((int)(Math.random()*coordinates.size()));
+					int x = pair.getX(), y = pair.getY();
+					cards[x][y] = ""+(c+2)+k;
+					buttons[x][y] = new Button(c+2, k, icon, x, y){
+				/**
+						 * 
+						 */
+						private static final long serialVersionUID = 1L;
+
+						@Override
+						public void actionPerformed(ActionEvent e) {
+							if(clicks[0] == null)
+								clicks[0] = new Pair(getR(), getC());
+							else
+								clicks[1] = new Pair(getR(), getC());
+							
+							//System.out.println(Arrays.toString(clicks));
+							
+							if(clicks[0] != null && clicks[1] != null) {
+								System.out.println(buttons[clicks[0].getX()][clicks[0].getY()]+"\t"+buttons[clicks[1].getX()][clicks[1].getY()]);
+								change(buttons[clicks[0].getX()][clicks[0].getY()], 
+										buttons[clicks[1].getX()][clicks[1].getY()]);
+							}
+						}	
+					};
+				}
+			}
+			buttons[r][buttons[r].length-1] = new Button(14, k, new ImageIcon("CardImages/"+14+k+".gif"), 
+					r, buttons[r].length-1);
